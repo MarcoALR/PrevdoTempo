@@ -1,12 +1,53 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ☀️ Previsão do Tempo
 
-Currently, two official plugins are available:
+**Aplicativo web de clima moderno e responsivo, usando React + OpenWeatherMap.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌙 Interface escura elegante • 📍 Localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com estilo personalizado
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🌤️ Preview da Interface
+
+<img src="https://raw.githubusercontent.com/MarcoALR/PrevisaodoTempo/main/src/assets/preview.png" alt="Preview do App" width="80%"/>
+
+</div>
+
+---
+
+## 🔍 Funcionalidades
+
+- ☁️ Clima atual: temperatura, sensação térmica e descrição
+- 🌧️ Volume de chuva, umidade, direção e velocidade do vento
+- 📍 Suporte à localização atual via navegador
+- 📅 Previsão para os próximos 5 dias
+- 🌗 Tema escuro moderno
+- 🎨 Ícones de clima personalizados com CSS (`hue-rotate`, `brightness`, etc.)
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- [React.js](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- CSS moderno (Flexbox, filters, variáveis)
+- Hooks (`useEffect`, `useState`) para controle de estado
+
+---
+
+## 💻 Instalação Local
+
+```bash
+# Clone o repositório
+git clone https://github.com/MarcoALR/PrevisaodoTempo.git
+
+# Acesse a pasta
+cd PrevisaodoTempo
+
+# Instale as dependências
+npm install
+
+# Rode o projeto
+npm run dev
