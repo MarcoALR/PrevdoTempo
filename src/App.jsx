@@ -9,6 +9,8 @@ function App() {
   const [weather5Days, setWeather5Days] = useState();
   const [localTime, setLocalTime] = useState("");
   const [rainChance, setRainChance] = useState(null);
+  const [error, setError] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
   const inputRef = useRef();
 
   async function searchLocalTimeAndRain(lat, lon) {
@@ -30,39 +32,100 @@ function App() {
     }
   }
 
-  async function searchCity() {
-    const city = inputRef.current.value;
-    const key = "610532f197f9ff53d5b683d790f1fc31"; // OpenWeatherMap API
+  async function searchCity(cityParam) {
+    const city = cityParam || inputRef.current.value;
+    const key = "610532f197f9ff53d5b683d790f1fc31";            // OpenweathermapAPI
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&lang=pt_br&units=metric`;
-    const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&lang=pt_br&units=metric`
+    const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&lang=pt_br&units=metric`;
 
-const apiinfo5days = await axios.get(url5days)
+    try {
+      const apiinfo5days = await axios.get(url5days);
+      setWeather5Days(apiinfo5days.data);
 
-console.log(url5days)
-try {
-    const apiinfo5days = await axios.get(url5days);
-    setWeather5Days(apiinfo5days.data);
+      const apiInfo = await axios.get(url);
+      setWeather(apiInfo.data);
+      setError(false);
+      setSuggestions([]);
 
-    const apiInfo = await axios.get(url);
-    setWeather(apiInfo.data);
-
-    const { lat, lon } = apiInfo.data.coord;
-    await searchLocalTimeAndRain(lat, lon);
-
-  } catch (error) {
-    console.error("Erro ao buscar dados da cidade:", error);
-    alert("Erro ao buscar dados da cidade.");
+      const { lat, lon } = apiInfo.data.coord;
+      await searchLocalTimeAndRain(lat, lon);
+    } catch (error) {
+      console.error("Erro ao buscar dados da cidade:", error);
+      setError(true);
+      setWeather(null);
+      setWeather5Days(null);
+    }
   }
-}
+
+  async function fetchSuggestions(query) {
+    const key = "610532f197f9ff53d5b683d790f1fc31";
+    if (query.length < 2) return setSuggestions([]);
+
+    try {
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${key}`;
+      const res = await axios.get(url);
+      setSuggestions(res.data);
+    } catch (err) {
+      console.error("Erro ao buscar sugestões:", err);
+      setSuggestions([]);
+    }
+  }
+
   return (
     <div className="conteiner">
-      <h1>Previsão do tempo🏳️‍🌈💘🏳️‍🌈</h1>
-      <div className="search-container" >
-      <input ref={inputRef} type="text" placeholder="Digite o nome da sua cidade" />
-      <button className="botao-laranja" onClick={searchCity}>Buscar</button> </div> 
-     {weather && <WeatherInformations weather={weather} localTime={localTime} rainChance={rainChance}/>}
-      {weather5Days && <WeatherInformations5Days weather5Days={weather5Days}/>}
+      <h1>Previsão do tempo</h1>
+
+      <div className="search-container">
+        <div className="autocomplete-container">
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Digite o nome da sua cidade"
+            onChange={(e) => fetchSuggestions(e.target.value)}
+          />
+          {suggestions.length > 0 && (
+            <ul className="sugestoes">
+              {suggestions.map((item, idx) => (
+                <li
+                  key={idx}
+                  onClick={() => {
+                    const nomeCompleto = `${item.name}${item.state ? ", " + item.state : ""}, ${item.country}`;
+                    inputRef.current.value = nomeCompleto;
+                    searchCity(nomeCompleto);
+                    setSuggestions([]);
+                  }}
+                >
+                  {item.name} {item.state ? `- ${item.state}` : ""} ({item.country})
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <button className="botao-laranja" onClick={() => searchCity()}>
+          Buscar
+        </button>
+      </div>
+
+      {error && (
+        <p style={{ color: "red", marginTop: "10px" }}>
+          Cidade não encontrada. Verifique se digitou corretamente.
+        </p>
+      )}
+
+      {weather && (
+        <WeatherInformations
+          weather={weather}
+          localTime={localTime}
+          rainChance={rainChance}
+        />
+      )}
+
+      {weather5Days && (
+        <WeatherInformations5Days weather5Days={weather5Days} />
+      )}
     </div>
   );
 }
+
 export default App;

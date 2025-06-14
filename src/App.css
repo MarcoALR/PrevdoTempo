@@ -6,7 +6,7 @@
 }
 h1 {
   font-size: 3.4rem;
-  color: #ff008c;
+  color: #fff;
 }
 .search-container {
   display: flex;
@@ -71,4 +71,42 @@ h1 {
     max-width: 90%;
     width: 100%;
   }
+}
+
+
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.sugestoes {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.sugestoes li {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #f1f5f9;
+  border-bottom: 1px solid #334155;
+  transition: background 0.2s ease;
+}
+
+.sugestoes li:hover {
+  background-color: #0f172a;
+}
+
+.sugestoes li:last-child {
+  border-bottom: none;
 }

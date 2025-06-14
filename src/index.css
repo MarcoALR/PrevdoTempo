@@ -7,7 +7,6 @@
 body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(135deg, #1e3c72, #2a5298);
-  background: url('/src/assets/vipau.png') no-repeat center center fixed;
   background-size: cover;
   color: #f8fafc;
   line-height: 1.4;
@@ -20,7 +19,6 @@ body {
   padding: 20px;
   position: relative;
 }
-
 body::after {
   content: "";
   position: absolute;
@@ -47,8 +45,6 @@ body::after {
     opacity: 1;
   }
 }
-
-
 body.show-bg::after {
   opacity: 1;
 }

@@ -47,8 +47,7 @@ function WeatherInformations({ weather, localTime, rainChance }) {
     color: '#f8fafc',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.82)',
     textAlign: 'center',
-    margin: 0,
-    margin: 0,
+    margin: 0
   }}>{temperature}°C</p>
       </div>
 
