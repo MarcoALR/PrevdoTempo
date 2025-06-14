@@ -10,7 +10,8 @@
 
 ### 🌤️ Preview da Interface
 
-<img src="https://raw.githubusercontent.com/MarcoALR/PrevdoTempo/main/src/assets/preview.png" alt="Preview do App" width="80%"/>
+<img src="![preview png](https://github.com/user-attachments/assets/f9f49ab0-ff05-4583-88cd-f6a32479ca0d)
+" alt="Preview do App" width="80%"/>
 
 </div>
 
