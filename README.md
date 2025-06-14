@@ -33,6 +33,7 @@
 - [React.js](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [OpenWeatherMap API](https://openweathermap.org/api)
+- [Weather API](https://weather.com/)
 - CSS moderno (Flexbox, gradientes, variáveis)
 - React Hooks (`useState`, `useEffect`, `useRef`)
 - Axios para requisições HTTP
