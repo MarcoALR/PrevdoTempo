@@ -10,7 +10,7 @@
 
 ### 🌤️ Preview da Interface
 
-<img src="PrevdoTempo/src/assets/preview.png" alt="Preview do App" width="80%"/>
+<img src="src/assets/preview.png" alt="Preview do App" width="80%"/>
 
 </div>
 
