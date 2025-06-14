@@ -1,10 +1,10 @@
 <div align="center">
 
-# ☀️ Previsão do Tempo
+# ☀️ PrevdoTempo
 
-**Aplicativo web de clima moderno e responsivo, usando React + OpenWeatherMap.**
+**Aplicativo web de clima moderno e responsivo, desenvolvido com React + OpenWeatherMap.**
 
-🌙 Interface escura elegante • 📍 Localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com estilo personalizado
+🌙 Interface escura elegante • 📍 Busca por cidade e localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com filtros CSS
 
 ---
 
@@ -18,12 +18,13 @@
 
 ## 🔍 Funcionalidades
 
-- ☁️ Clima atual: temperatura, sensação térmica e descrição
-- 🌧️ Volume de chuva, umidade, direção e velocidade do vento
-- 📍 Suporte à localização atual via navegador
-- 📅 Previsão para os próximos 5 dias
-- 🌗 Tema escuro moderno
-- 🎨 Ícones de clima personalizados com CSS (`hue-rotate`, `brightness`, etc.)
+- ☁️ Clima atual: temperatura, sensação térmica e descrição do tempo
+- 🌧️ Informações adicionais: umidade, volume de chuva, direção e velocidade do vento
+- 📍 Detecção de localização via navegador
+- 🧠 Sugestões de cidades com autocomplete
+- 📅 Previsão estendida para os próximos 5 dias
+- 🌗 Tema escuro com gradientes e visual moderno
+- 🎨 Ícones personalizados usando filtros CSS (`hue-rotate`, `brightness`, etc.)
 
 ---
 
@@ -32,8 +33,9 @@
 - [React.js](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [OpenWeatherMap API](https://openweathermap.org/api)
-- CSS moderno (Flexbox, filters, variáveis)
-- Hooks (`useEffect`, `useState`) para controle de estado
+- CSS moderno (Flexbox, gradientes, variáveis)
+- React Hooks (`useState`, `useEffect`, `useRef`)
+- Axios para requisições HTTP
 
 ---
 
@@ -43,11 +45,11 @@
 # Clone o repositório
 git clone https://github.com/MarcoALR/PrevdoTempo.git
 
-# Acesse a pasta
-cd PrevdoTemp
+# Acesse a pasta do projeto
+cd PrevdoTempo
 
 # Instale as dependências
 npm install
 
-# Rode o projeto
+# Inicie o servidor de desenvolvimento
 npm run dev
