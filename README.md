@@ -24,7 +24,7 @@
 - 🧠 Sugestões de cidades com autocomplete
 - 📅 Previsão estendida para os próximos 5 dias
 - 🌗 Tema escuro com gradientes e visual moderno
-- 🎨 Ícones personalizados usando filtros CSS (`hue-rotate`, `brightness`, etc.)
+- 🎨 Ícones personalizados usando filtros CSS (`hue-rotate`, `brightness`, etc..)
 
 ---
 
