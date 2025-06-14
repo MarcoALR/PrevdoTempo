@@ -1,8 +1,8 @@
 <div align="center">
 
-# ☀️ PrevdoTempo
+# ☀️ Previsão do Tempo
 
-**Aplicativo web de clima moderno e responsivo, desenvolvido com React + OpenWeatherMap.**
+**Aplicativo web de clima moderno e responsivo, desenvolvido com React + OpenWeatherMapAPI e WeatherAPI**
 
 🌙 Interface escura elegante • 📍 Busca por cidade e localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com filtros CSS
 
