@@ -14,7 +14,6 @@ function WeatherInformations5Days({ weather5Days }) {
 
   const nextfivedaysForecast = Object.values(dailyforcast).slice(0,5);
   
-
 function convertdate(date){
  
   const newdate = new Date(date.dt * 1000).toLocaleDateString('pt-BR', {weekday: 'long', day:"2-digit"})
