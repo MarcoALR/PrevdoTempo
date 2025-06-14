@@ -7,7 +7,8 @@
 body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(135deg, #1e3c72, #2a5298);
-  font-family: "Inter", sans-serif;
+  background: url('/src/assets/vipau.png') no-repeat center center fixed;
+  background-size: cover;
   color: #f8fafc;
   line-height: 1.4;
   min-height: 100dvh;
@@ -19,9 +20,7 @@ body {
   padding: 20px;
   position: relative;
 }
-body.show-bg::after {
-  opacity: 1;
-}
+
 body::after {
   content: "";
   position: absolute;
@@ -31,7 +30,7 @@ body::after {
   height: 100%;
   background-image: url('/src/assets/after.png');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   opacity: 0;
   animation: fadeInZoom 0.4s ease-out forwards;
@@ -47,6 +46,11 @@ body::after {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+
+body.show-bg::after {
+  opacity: 1;
 }
 input {
   text-align: center;
