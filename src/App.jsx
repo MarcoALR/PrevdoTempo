@@ -11,6 +11,7 @@ function App() {
   const [rainChance, setRainChance] = useState(null);
   const [error, setError] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
+  const [inputValue, setInputValue] = useState("");
   const inputRef = useRef();
 
   async function searchLocalTimeAndRain(lat, lon) {
@@ -34,7 +35,7 @@ function App() {
 
   async function searchCity(cityParam) {
     const city = cityParam || inputRef.current.value;
-    const key = "610532f197f9ff53d5b683d790f1fc31";            // OpenweathermapAPI
+    const key = "610532f197f9ff53d5b683d790f1fc31"; // OpenweathermapAPI
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&lang=pt_br&units=metric`;
     const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&lang=pt_br&units=metric`;
 
@@ -59,6 +60,7 @@ function App() {
 
   async function fetchSuggestions(query) {
     const key = "610532f197f9ff53d5b683d790f1fc31";
+    setInputValue(query);
     if (query.length < 2) return setSuggestions([]);
 
     try {
@@ -71,18 +73,55 @@ function App() {
     }
   }
 
+  function clearInput() {
+    setInputValue("");
+    inputRef.current.value = "";
+    setSuggestions([]);
+  }
+
   return (
     <div className="conteiner">
       <h1>Previsão do tempo</h1>
 
       <div className="search-container">
-        <div className="autocomplete-container">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Digite o nome da sua cidade"
-            onChange={(e) => fetchSuggestions(e.target.value)}
-          />
+       <div className="autocomplete-container input-com-clear">
+  <input
+    ref={inputRef}
+    type="text"
+    value={inputValue}
+    placeholder="Digite o nome da sua cidade"
+    onChange={(e) => fetchSuggestions(e.target.value)}
+  />
+ {inputValue && (
+  <button
+    onClick={clearInput}
+    style={{
+      position: "absolute",
+      top: "50%",
+      right: "3%",
+      transform: "translateY(-50%)",
+      border: "none",
+      background: "linear-gradient(to right, #f59e0b, #d97706)",
+      color: "#fff",
+      fontSize: "12px",
+      fontWeight: "bold",
+      width: "21px",
+      height: "18px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      padding: 0,
+      lineHeight: 1,
+      boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    ×
+  </button>
+)}
+
+
           {suggestions.length > 0 && (
             <ul className="sugestoes">
               {suggestions.map((item, idx) => (
@@ -91,6 +130,7 @@ function App() {
                   onClick={() => {
                     const nomeCompleto = `${item.name}${item.state ? ", " + item.state : ""}, ${item.country}`;
                     inputRef.current.value = nomeCompleto;
+                    setInputValue(nomeCompleto);
                     searchCity(nomeCompleto);
                     setSuggestions([]);
                   }}

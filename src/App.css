@@ -49,6 +49,7 @@ h1 {
   color: #f8fafc;
   font-weight: bold;
   font-size: 1rem;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
   transition: background 0.2s ease, transform 0.2s ease;
   width: 100%;
   max-width: 120px;
@@ -56,8 +57,9 @@ h1 {
 }
 
 .search-container button:hover {
+  transform: translateY(-50%) scale(1.1);
   background: linear-gradient(to right, #f88f44, #f8732b);
-  transform: scale(1.04);
+  transform: scale(1);
 }
 
 @media (max-width: 480px) {
@@ -68,7 +70,7 @@ h1 {
 
   .search-container input,
   .search-container button {
-    max-width: 90%;
+    max-width: 100%;
     width: 100%;
   }
 }
