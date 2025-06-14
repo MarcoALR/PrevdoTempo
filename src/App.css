@@ -70,8 +70,8 @@ h1 {
 
   .search-container input,
   .search-container button {
-    max-width: 100%;
-    width: 100%;
+     font-size: 0.9rem;
+    padding: 10px 16px;
   }
 }
 .autocomplete-container {
