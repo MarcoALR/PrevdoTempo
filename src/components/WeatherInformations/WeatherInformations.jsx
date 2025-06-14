@@ -2,8 +2,9 @@ import './WeatherInformations.css';
 
 function WeatherInformations({ weather, localTime, rainChance }) {
   if (!weather || !weather.main || !weather.weather || !weather.wind) {
-    return <p>Dados indisponíveis.</p>;
+    return <p className="carregando">Carregando clima...</p>;
   }
+
   const temperature = Math.round(weather.main.temp);
   const feelsLike = Math.round(weather.main.feels_like);
   const humidity = weather.main.humidity;
@@ -25,7 +26,6 @@ function WeatherInformations({ weather, localTime, rainChance }) {
   const rainVolume = weather.rain?.['1h'] || weather.rain?.['3h'] || 0;
   const rainText = rainVolume > 0 ? `${rainVolume} mm` : 'Sem chuva recente';
 
-  
   const estaChovendoAgora =
     rainVolume > 0 || weather.weather[0].main.toLowerCase().includes("rain");
 
@@ -35,8 +35,21 @@ function WeatherInformations({ weather, localTime, rainChance }) {
       <p className="hora-local">🕒 {localTime}</p>
       <div className="weather-info">
         <img
-          src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}style={{ filter: "hue-rotate(47deg) saturate(1300%) brightness(1.05)"}}alt={`Ícone representando clima: ${weather.weather[0].description}`}/>
-        <p className="temperature">{temperature}°C</p>
+          src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+          alt={`Ícone representando clima: ${weather.weather[0].description}`}
+          loading="lazy"
+          className="fade-image"
+          style={{ filter: "hue-rotate(47deg) saturate(1300%) brightness(1.05)" }}
+        />
+        <p className="temperaturee" style={{
+     fontSize: '3rem',
+    fontWeight: 'bold',
+    color: '#f8fafc',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.82)',
+    textAlign: 'center',
+    margin: 0,
+    margin: 0,
+  }}>{temperature}°C</p>
       </div>
 
       <p className="description">Clima: {weather.weather[0].description}</p>
@@ -47,7 +60,11 @@ function WeatherInformations({ weather, localTime, rainChance }) {
         <p>Umidade: {humidity}%</p>
         <p>Volume de Chuva: {rainText}</p>
         <p>Chance de Chuva (previsão): {rainChance !== null ? `${rainChance}%` : 'Indisponível'}</p>
-        {estaChovendoAgora && (<p className='estachovendo'style={{ color: '#4169E1', fontWeight: 'bold' }}  >Está chovendo agora ☔</p>)}
+        {estaChovendoAgora && (
+          <p className="estachovendo" style={{ color: '#4169E1', fontWeight: 'bold' }}>
+            Está chovendo agora ☔
+          </p>
+        )}
         <p>Vento: {windSpeed} km/h</p>
       </div>
     </div>
