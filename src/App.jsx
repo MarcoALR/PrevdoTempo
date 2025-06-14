@@ -54,16 +54,15 @@ try {
     alert("Erro ao buscar dados da cidade.");
   }
 }
-
   return (
     <div className="conteiner">
       <h1>Previsão do tempo</h1>
+      <div className="search-container" >
       <input ref={inputRef} type="text" placeholder="Digite o nome da sua cidade" />
-      <button className="botao-laranja" onClick={searchCity}>Buscar</button>
-      {weather && <WeatherInformations weather={weather} localTime={localTime} rainChance={rainChance}/>}
+      <button className="botao-laranja" onClick={searchCity}>Buscar</button> </div> 
+     {weather && <WeatherInformations weather={weather} localTime={localTime} rainChance={rainChance}/>}
       {weather5Days && <WeatherInformations5Days weather5Days={weather5Days}/>}
     </div>
   );
 }
-
 export default App;
