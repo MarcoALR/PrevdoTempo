@@ -56,7 +56,7 @@ try {
 }
   return (
     <div className="conteiner">
-      <h1>Previsão do tempo</h1>
+      <h1>Previsão do tempo🏳️‍🌈💘🏳️‍🌈</h1>
       <div className="search-container" >
       <input ref={inputRef} type="text" placeholder="Digite o nome da sua cidade" />
       <button className="botao-laranja" onClick={searchCity}>Buscar</button> </div> 
