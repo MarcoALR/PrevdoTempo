@@ -1,0 +1,82 @@
+/* Container geral com gradiente e sombra (sem mudança) */
+.weather-containerr {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+  border-radius: 16px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid #475569;
+}
+
+/* Título */
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #f1f5f9;
+}
+
+/* Lista horizontal de itens */
+.weather-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Cada cartão do tempo */
+.weather-item {
+  flex: 1 1 130px;
+  text-align: center;
+  background-color: #475569;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+  border: 1px solid #64748b;
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+/* Efeito hover suave e elevado */
+.weather-item:hover {
+  transform: translateY(-6px) scale(1.03);
+  background-color: #64748b;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto das previsões */
+.forecast-day,
+.forecast-description {
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin: 5px 0;
+}
+
+/* Ícones com sombra */
+.weather-item img {
+  width: 60px;
+  height: auto;
+  margin: 10px 0;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
+  transition: transform 0.3s ease;
+}
+
+/* Animação de imagem no hover */
+.weather-item:hover img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .weather-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weather-item {
+    width: 90%;
+  }
+}
