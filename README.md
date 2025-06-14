@@ -41,10 +41,10 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/MarcoALR/PrevisaodoTempo.git
+git clone https://github.com/MarcoALR/PrevdoTempo.git
 
 # Acesse a pasta
-cd PrevisaodoTempo
+cd PrevdoTemp
 
 # Instale as dependências
 npm install
