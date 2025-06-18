@@ -2,15 +2,15 @@
 
 # ☀️ Previsão do Tempo
 
-**<h4>Aplicativo web de clima moderno e responsivo, desenvolvido com React + OpenWeatherMapAPI e WeatherAPI<h4/>**
+**Aplicativo web de clima moderno e responsivo, usando React + OpenWeatherMap.**
 
-🌙 Interface escura elegante • 📍 Busca por cidade e localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com filtros CSS
+🌙 Interface escura elegante • 📍 Localização atual • 📆 Previsão para 5 dias • 🎨 Ícones com estilo personalizado
 
 ---
 
 ### 🌤️ Preview da Interface
 
-<img src="src/assets/preview.png" alt="Preview do App" width="80%"/>
+<img src="https://raw.githubusercontent.com/MarcoALR/PrevdoTempo/main/src/assets/preview.png" alt="Preview do App" width="80%"/>
 
 </div>
 
@@ -18,13 +18,12 @@
 
 ## 🔍 Funcionalidades
 
-- ☁️ Clima atual: temperatura, sensação térmica e descrição do tempo
-- 🌧️ Informações adicionais: umidade, volume de chuva, direção e velocidade do vento
-- 📍 Detecção de localização via navegador
-- 🧠 Sugestões de cidades com autocomplete
-- 📅 Previsão estendida para os próximos 5 dias
-- 🌗 Tema escuro com gradientes e visual moderno
-- 🎨 Ícones personalizados usando filtros CSS (`hue-rotate`, `brightness`, etc..)
+- ☁️ Clima atual: temperatura, sensação térmica e descrição
+- 🌧️ Volume de chuva, umidade, direção e velocidade do vento
+- 📍 Suporte à localização atual via navegador
+- 📅 Previsão para os próximos 5 dias
+- 🌗 Tema escuro moderno
+- 🎨 Ícones de clima personalizados com CSS (`hue-rotate`, `brightness`, etc.)
 
 ---
 
@@ -33,10 +32,8 @@
 - [React.js](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [OpenWeatherMap API](https://openweathermap.org/api)
-- [Weather API](https://weather.com/)
-- CSS moderno (Flexbox, gradientes, variáveis)
-- React Hooks (`useState`, `useEffect`, `useRef`)
-- Axios para requisições HTTP
+- CSS moderno (Flexbox, filters, variáveis)
+- Hooks (`useEffect`, `useState`) para controle de estado
 
 ---
 
@@ -44,13 +41,13 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/MarcoALR/PrevdoTempo.git
+git clone https://github.com/MarcoALR/PrevisaodoTempo.git
 
-# Acesse a pasta do projeto
-cd PrevdoTempo
+# Acesse a pasta
+cd PrevisaodoTempo
 
 # Instale as dependências
 npm install
 
-# Inicie o servidor de desenvolvimento
+# Rode o projeto
 npm run dev

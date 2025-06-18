@@ -32,7 +32,26 @@ function WeatherInformations({ weather, localTime, rainChance }) {
   return (
     <div className="weather-container">
       <h2>{cityName}</h2>
-      <p className="hora-local">🕒 {localTime}</p>
+
+      {localTime && localTime !== "Indisponível" && (
+        <div className="hora-local" style={{ marginBottom: '10px', textAlign: 'center' }}>
+          <p style={{ margin: '0', fontSize: '1.1rem' }}>
+            🕒 {localTime.split(' ')[1]}
+          </p>
+          <p style={{ margin: '0', fontSize: '1rem', opacity: 0.8 }}>
+            📅 {(() => {
+              const [dataPart] = localTime.split(' ');
+              const [ano, mes, dia] = dataPart.split('-');
+              const meses = [
+                'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+              ];
+              return `${dia} de ${meses[parseInt(mes, 10) - 1]} de ${ano}`;
+            })()}
+          </p>
+        </div>
+      )}
+
       <div className="weather-info">
         <img
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
@@ -42,13 +61,13 @@ function WeatherInformations({ weather, localTime, rainChance }) {
           style={{ filter: "hue-rotate(47deg) saturate(1300%) brightness(1.05)" }}
         />
         <p className="temperaturee" style={{
-     fontSize: '3rem',
-    fontWeight: 'bold',
-    color: '#f8fafc',
-    textShadow: '0 2px 4px rgba(0, 0, 0, 0.82)',
-    textAlign: 'center',
-    margin: 0
-  }}>{temperature}°C</p>
+          fontSize: '3rem',
+          fontWeight: 'bold',
+          color: '#f8fafc',
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.82)',
+          textAlign: 'center',
+          margin: 0
+        }}>{temperature}°C</p>
       </div>
 
       <p className="description">Clima: {weather.weather[0].description}</p>

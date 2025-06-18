@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 import WeatherInformations from "./components/WeatherInformations/WeatherInformations";
-import WeatherInformations5Days from "./components/WeatherInformations5Days/WeatherInformations5Days";
+import WeatherInformations5Days from "./components/WeatherInformations5days/WeatherInformations5days";
 
 function App() {
   const [weather, setWeather] = useState();
@@ -14,24 +14,23 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef();
 
-  async function searchLocalTimeAndRain(lat, lon) {
-    const key = "38cde37e61fe4ce99a8225813251306"; // WeatherAPI
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}&days=1&lang=pt`;
+async function searchLocalTimeAndRain(lat, lon) {
+  const key = "38cde37e61fe4ce99a8225813251306"; // WeatherAPI
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}&days=1&lang=pt`;
 
-    try {
-      const response = await axios.get(url);
-      const time = response.data.location.localtime;
-      const hourOnly = time.split(" ")[1];
-      const rain = response.data.forecast.forecastday[0].day.daily_chance_of_rain;
+  try {
+    const response = await axios.get(url);
+    const localDateTime = response.data.location.localtime;  
+    const rain = response.data.forecast.forecastday[0].day.daily_chance_of_rain;
 
-      setLocalTime(hourOnly);
-      setRainChance(rain);
-    } catch (error) {
-      console.error("Erro ao buscar hora local ou chance de chuva:", error);
-      setLocalTime("Indisponível");
-      setRainChance(null);
-    }
+    setLocalTime(localDateTime); 
+    setRainChance(rain);
+  } catch (error) {
+    console.error("Erro ao buscar hora local ou chance de chuva:", error);
+    setLocalTime("Indisponível");
+    setRainChance(null);
   }
+}
 
   async function searchCity(cityParam) {
     const city = cityParam || inputRef.current.value;
