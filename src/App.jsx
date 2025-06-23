@@ -14,27 +14,27 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef();
 
-async function searchLocalTimeAndRain(lat, lon) {
-  const key = "38cde37e61fe4ce99a8225813251306"; // WeatherAPI
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}&days=1&lang=pt`;
+  async function searchLocalTimeAndRain(lat, lon) {
+    const key = "38cde37e61fe4ce99a8225813251306"; // WeatherAPI
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},${lon}&days=1&lang=pt`;
 
-  try {
-    const response = await axios.get(url);
-    const localDateTime = response.data.location.localtime;  
-    const rain = response.data.forecast.forecastday[0].day.daily_chance_of_rain;
+    try {
+      const response = await axios.get(url);
+      const localDateTime = response.data.location.localtime;
+      const rain = response.data.forecast.forecastday[0].day.daily_chance_of_rain;
 
-    setLocalTime(localDateTime); 
-    setRainChance(rain);
-  } catch (error) {
-    console.error("Erro ao buscar hora local ou chance de chuva:", error);
-    setLocalTime("Indisponível");
-    setRainChance(null);
+      setLocalTime(localDateTime);
+      setRainChance(rain);
+    } catch (error) {
+      console.error("Erro ao buscar hora local ou chance de chuva:", error);
+      setLocalTime("Indisponível");
+      setRainChance(null);
+    }
   }
-}
 
   async function searchCity(cityParam) {
     const city = cityParam || inputRef.current.value;
-    const key = "610532f197f9ff53d5b683d790f1fc31"; // OpenweathermapAPI
+    const key = "610532f197f9ff53d5b683d790f1fc31"; // OpenWeatherMap API
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&lang=pt_br&units=metric`;
     const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&lang=pt_br&units=metric`;
 
@@ -83,43 +83,42 @@ async function searchLocalTimeAndRain(lat, lon) {
       <h1>Previsão do tempo</h1>
 
       <div className="search-container">
-       <div className="autocomplete-container input-com-clear">
-  <input
-    ref={inputRef}
-    type="text"
-    value={inputValue}
-    placeholder="Digite o nome da sua cidade"
-    onChange={(e) => fetchSuggestions(e.target.value)}
-  />
- {inputValue && (
-  <button
-    onClick={clearInput}
-    style={{
-      position: "absolute",
-      top: "50%",
-      right: "3%",
-      transform: "translateY(-50%)",
-      border: "none",
-      background: "linear-gradient(to right, #f59e0b, #d97706)",
-      color: "#fff",
-      fontSize: "12px",
-      fontWeight: "bold",
-      width: "21px",
-      height: "18px",
-      borderRadius: "50%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      padding: 0,
-      lineHeight: 1,
-      boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)",
-    }}
-  >
-    ×
-  </button>
-)}
-
+        <div className="autocomplete-container input-com-clear">
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            placeholder="Digite o nome da sua cidade"
+            onChange={(e) => fetchSuggestions(e.target.value)}
+          />
+          {inputValue && (
+            <button
+              onClick={clearInput}
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "3%",
+                transform: "translateY(-50%)",
+                border: "none",
+                background: "linear-gradient(to right, #f59e0b, #d97706)",
+                color: "#fff",
+                fontSize: "12px",
+                fontWeight: "bold",
+                width: "21px",
+                height: "18px",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                padding: 0,
+                lineHeight: 1,
+                boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              ×
+            </button>
+          )}
 
           {suggestions.length > 0 && (
             <ul className="sugestoes">
@@ -133,7 +132,13 @@ async function searchLocalTimeAndRain(lat, lon) {
                     searchCity(nomeCompleto);
                     setSuggestions([]);
                   }}
+                  style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", padding: "5px" }}
                 >
+                  <img
+                    src={`https://flagcdn.com/24x18/${item.country.toLowerCase()}.png`}
+                    alt={`Bandeira de ${item.country}`}
+                    style={{ width: "24px", height: "18px", objectFit: "cover", border: "1px solid #ccc" }}
+                  />
                   {item.name} {item.state ? `- ${item.state}` : ""} ({item.country})
                 </li>
               ))}
